@@ -7,10 +7,10 @@ const { Broadcast, PlayerRoles } = require('ranvier');
  */
 module.exports = {
   requiredRole: PlayerRoles.ADMIN,
-  command: state => (time, player) => {
+  command: state => async (time, player) => {
     if (time === 'now') {
       Broadcast.sayAt(state.PlayerManager, '<b><yellow>Game is shutting down now!</yellow></b>');
-      state.PlayerManager.saveAll();
+      await state.PlayerManager.saveAll();
       process.exit();
       return;
     }
@@ -20,10 +20,10 @@ module.exports = {
     }
 
     Broadcast.sayAt(state.PlayerManager, `<b><yellow>Game will shut down in ${30} seconds.</yellow></b>`);
-    setTimeout(_ => {
+    setTimeout(async _ => {
       Broadcast.sayAt(state.PlayerManager, '<b><yellow>Game is shutting down now!</yellow></b>');
       state.PlayerManager.saveAll();
-      process.exit();
+      await process.exit();
     }, 30000);
   }
 };
