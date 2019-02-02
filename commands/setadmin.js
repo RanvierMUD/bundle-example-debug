@@ -1,7 +1,7 @@
 'use strict';
 
 const { Broadcast, PlayerRoles } = require('ranvier');
-const Parser = require('@bundles/bundle-example-lib/lib/ArgParser');
+const Parser = require('../../bundle-example-lib/lib/ArgParser');
 
 module.exports = {
   requiredRole: PlayerRoles.ADMIN,
