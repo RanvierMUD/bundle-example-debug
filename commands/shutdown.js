@@ -22,7 +22,7 @@ module.exports = {
     Broadcast.sayAt(state.PlayerManager, `<b><yellow>Game will shut down in ${30} seconds.</yellow></b>`);
     setTimeout(async _ => {
       Broadcast.sayAt(state.PlayerManager, '<b><yellow>Game is shutting down now!</yellow></b>');
-      state.PlayerManager.saveAll();
+      await state.PlayerManager.saveAll();
       await process.exit();
     }, 30000);
   }
